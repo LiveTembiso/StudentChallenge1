@@ -97,12 +97,14 @@ const findEmptyPos = () => {
     }
 }
 
-const checkInvalid = (x, y, i, j) => 
-//
-//
-//Please update this function - insert code here to check if a move is invalid
-//
-//
+const checkInvalid = (x, y, i, j) => {
+    //
+    //
+    //Please update this function - insert code here to check if a move is invalid
+    //
+    //
+    return (x+j < 0 || y+i < 0 || x+j > game[0].length-1 || y+i > game.length-1 || i == j || i+j == 0)
+}
 
 const getNeighbour = pos => { //recalculates the new numbers that will be adjacent in a new game 
     let n = []
@@ -156,6 +158,16 @@ const checkGameWin = () => {
  //Please update this function - insert code here to check if a game is won at the end of a move
  //
  //
+
+    let position = 1
+    for (let i = 0; i < game.length; i++){
+        for(let j = 0; j < game[0].length ; j++){
+            if(game[i][j] != position && position != game.length**2){
+                return false
+            }else position++
+        }
+    }
+    return true
 }
 
 const move = e => { //handles the movement of an actual tile.
